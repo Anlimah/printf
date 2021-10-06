@@ -22,7 +22,6 @@ int _printf(const char *format, ...) {
 	if (format == NULL || (format[0] == '%' && format[1] == '\0'))
 		return (-1);
 
-Here:
 	while (format[i] != '\0')
 	{
 		j = 3;
@@ -32,7 +31,6 @@ Here:
 			{
 				len += match[j].f(args);
 				i = i + 2;
-				goto Here;
 			}
 			j--;
 		}
