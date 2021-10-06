@@ -1,29 +1,23 @@
 #ifndef MAIN_H
 #define MAIN_H
 
-#include <stdio.h>
-#include <stdlib.h>
 #include <stdarg.h>
-#include <limits.h>
-#include <unistd.h>
-
-/**
- * struct format - match the conversion specifiers for printf
- * @id: type char pointer of the specifier i.e (l, h) for (d, i, u, o, x, X)
- * @f: type pointer to function for the conversion specifier
- *
- */
-
-typedef struct format
-{
-	char *id;
-	int (*f)();
-} printf_match;
 
 int _putchar(char c);
 int _printf(const char *format, ...);
-int printf_char(va_list val);
-int printf_percent(void);
-int printf_string(va_list val);
+int print_char(va_list c);
+int print_string(va_list s);
+int print_percent(void)
+/**
+  * struct code_format - Struct format
+  *
+  * @sc: The specifiers
+  * @f: The function associated
+  */
+typedef struct format
+{
+	char *sc;
+	int (*f)(va_list);
+} printf_format;
 
-#endif
+#endif 
