@@ -32,13 +32,13 @@ int (*find_function(const char *format))(va_list)
   */
 int _printf(const char *format, ...)
 {
-	va_list ap;
+	va_list arg;
 	int (*f)(va_list);
 	unsigned int i = 0, cprint = 0;
 
 	if (format == NULL)
 		return (-1);
-	va_start(ap, format);
+	va_start(arg, format);
 	while (format[i])
 	{
 		while (format[i] != '%' && format[i])
@@ -52,7 +52,7 @@ int _printf(const char *format, ...)
 		f = find_function(&format[i + 1]);
 		if (f != NULL)
 		{
-			cprint += f(ap);
+			cprint += f(arg);
 			i += 2;
 			continue;
 		}
@@ -65,6 +65,6 @@ int _printf(const char *format, ...)
 		else
 			i++;
 	}
-	va_end(ap);
+	va_end(arg);
 	return (cprint);
 }
